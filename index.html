@@ -130,6 +130,17 @@ dialog p{color:var(--os);text-align:center;margin:10px 0 0;font-weight:500}
 .contact .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:34px}
 .infos{list-style:none;padding:0;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;color:var(--doux)}
 .infos b{color:var(--os)}
+
+/* Devis */
+.devis{display:grid;gap:16px;max-width:640px;margin:0 auto 34px;text-align:left}
+@media (min-width:620px){.devis{grid-template-columns:1fr 1fr}.devis .large{grid-column:1/-1}}
+.devis label{display:grid;gap:6px;align-content:end;color:var(--os);font-weight:700}
+.devis small{color:var(--doux);font-weight:400}
+.devis input,.devis select,.devis textarea{width:100%;min-height:50px;padding:.7em .8em;border:1.5px solid rgba(239,231,214,.35);border-radius:6px;background:var(--anthracite);color:var(--os);font:inherit;font-weight:400}
+.devis textarea{min-height:130px;resize:vertical}
+.devis :focus{outline:2px solid var(--or);outline-offset:1px}
+.devis .bouton{border:0;cursor:pointer;width:100%;font:inherit;font-weight:700}
+#devis-suite{margin:0;color:var(--or)}
 footer{padding:26px 20px 34px;text-align:center;color:var(--doux);font-size:.9rem;border-top:2px dashed rgba(184,154,94,.28);background:#1d100d}
 footer p{margin:.2em 0}
 </style>
@@ -145,6 +156,7 @@ footer p{margin:.2em 0}
     <nav aria-label="Menu">
       <a href="#realisations">Réalisations</a>
       <a href="#avant-apres">Avant / après</a>
+      <a href="#devis">Devis</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -157,7 +169,7 @@ footer p{margin:.2em 0}
     <h1>Une selle à ton image, faite pour ta moto</h1>
     <p class="texte">Confort, design et broderie : chaque selle est pensée sur mesure. Envoi partout en France.</p>
     <div class="actions">
-      <a class="bouton" href="#contact">J'ai un projet</a>
+      <a class="bouton" href="#devis">Demander un devis</a>
       <a class="bouton clair" href="#realisations">Voir les réalisations</a>
     </div>
   </div></div>
@@ -219,7 +231,7 @@ footer p{margin:.2em 0}
       <div class="appel">
         <h3>La prochaine, c'est la tienne ?</h3>
         <p>Dis-moi quelle moto tu as et l'idée que tu as en tête.</p>
-        <a class="bouton" href="#contact">Parler de mon projet</a>
+        <a class="bouton" href="#devis">Demander un devis</a>
       </div>
     </div>
   </div>
@@ -267,9 +279,28 @@ footer p{margin:.2em 0}
 
 <section id="contact" class="contact">
   <div class="conteneur">
-    <p class="surtitre">Contact</p>
-    <h2>Tu as un projet ?</h2>
-    <p class="chapo">Écris-moi par mail ou en message privé, avec ta moto et ton idée.</p>
+    <p class="surtitre">Devis</p>
+    <h2 id="devis">Demande ton devis</h2>
+    <p class="chapo">Remplis ces quelques lignes : ton mail s'ouvre avec ta demande déjà écrite, il ne reste qu'à ajouter tes photos et à l'envoyer.</p>
+    <form class="devis" id="form-devis">
+      <label>Ton prénom <input name="prenom" autocomplete="given-name" required></label>
+      <label>Téléphone <small>(facultatif)</small> <input name="tel" type="tel" autocomplete="tel"></label>
+      <label>Ton projet
+        <select name="projet" required>
+          <option value="">Choisis…</option>
+          <option>Selle moto sur mesure</option>
+          <option>Réparation ou rénovation</option>
+          <option>Volant</option>
+          <option>Canapé ou fauteuil</option>
+          <option>Autre</option>
+        </select>
+      </label>
+      <label>Ta machine <small>(marque, modèle, année)</small> <input name="machine"></label>
+      <label class="large">Ton idée <small>(couleurs, surpiqûres, broderie, état actuel…)</small> <textarea name="idee" required></textarea></label>
+      <div class="large"><button class="bouton" type="submit">Préparer ma demande de devis</button></div>
+      <p class="large" id="devis-suite" role="status" hidden>Ton mail doit s'ouvrir : ajoute tes photos, puis envoie. Rien ne s'ouvre ? Écris directement à selledejerem@gmail.com.</p>
+    </form>
+    <p class="chapo">Tu préfères écrire directement ?</p>
     <div class="actions">
       <a class="bouton" href="mailto:selledejerem@gmail.com?subject=Mon%20projet%20de%20selle">M'écrire un mail</a>
       <a class="bouton clair" href="https://www.instagram.com/les_selles_de_jerem/" rel="noopener" target="_blank">Message sur Instagram</a>
@@ -307,6 +338,28 @@ document.querySelectorAll(".piece").forEach(p => p.addEventListener("click", () 
   zoom.showModal();
 }));
 zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
+
+function mailDevis(d) {
+  const corps = `Bonjour Jeremy,
+
+Je souhaite un devis.
+
+Prénom : ${d.prenom}
+Téléphone : ${d.tel || "non précisé"}
+Projet : ${d.projet}
+Machine : ${d.machine || "non précisée"}
+
+Mon idée :
+${d.idee}
+
+(Pense à joindre des photos.)`;
+  return "mailto:selledejerem@gmail.com?subject=" + encodeURIComponent(`Demande de devis : ${d.projet}`) + "&body=" + encodeURIComponent(corps);
+}
+document.getElementById("form-devis").addEventListener("submit", e => {
+  e.preventDefault();
+  document.getElementById("devis-suite").hidden = false;
+  location.href = mailDevis(Object.fromEntries(new FormData(e.target)));
+});
 
 </script>
 </body>
