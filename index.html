@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les Selles de Jerem | Selles moto sur mesure, Montbellet (71)</title>
+<meta name="description" content="Selles moto sur mesure à Montbellet (71) : confort, broderie, matières spéciales moto, rabaissement. Envoi partout en France, uniquement sur rendez-vous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0e0c0b; --anthracite:#191614; --cuir:#231e1b;
+  --rouge:#c23a2e; --brique:#a4503f; --or:#b89a5e; --os:#efe7d6; --texte:#d9d0c1; --doux:#a79c8a;
+  --titre:"Cinzel",Georgia,"Times New Roman",serif;
+  --corps:"Karla",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--noir);color:var(--texte);font:17px/1.6 var(--corps)}
+img{max-width:100%;display:block}
+a{color:var(--os)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--os);outline-offset:3px}
+h1,h2,h3{font-family:var(--titre);color:var(--os);font-weight:700;letter-spacing:.03em;line-height:1.15;margin:0}
+h2{font-size:clamp(1.8rem,5vw,3rem)}
+.conteneur{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:88px 0}
+.surtitre{display:inline-flex;align-items:center;gap:12px;color:var(--or);font-weight:700;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
+.surtitre::before{content:"";width:34px;border-top:2px dashed var(--rouge)}
+.chapo{color:var(--doux);max-width:38em;margin:14px 0 40px;font-size:1.08rem}
+.bouton{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.7em 1.6em;border-radius:6px;font-weight:700;text-decoration:none;background:var(--rouge);color:#fff;border:0;outline:1.5px dashed rgba(255,255,255,.55);outline-offset:-6px;transition:background .15s}
+.bouton:hover{background:#d84a3d}
+.bouton.clair{background:rgba(14,12,11,.45);color:var(--os);outline:0;border:1.5px solid rgba(239,231,214,.55)}
+.bouton.clair:hover{background:rgba(239,231,214,.14)}
+
+/* Barre du haut */
+.barre{position:sticky;top:0;z-index:5;background:rgba(14,12,11,.92);border-bottom:1px solid #2a2421}
+.barre .conteneur{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--titre);font-weight:700;color:var(--os);font-size:1rem;white-space:nowrap}
+.marque img{width:40px;height:40px;border-radius:50%}
+.barre nav{display:flex;gap:22px;font-weight:500}
+.barre nav a{text-decoration:none;color:var(--texte)}
+.barre nav a:hover{color:#fff}
+@media (max-width:640px){.barre nav a:not(:last-child){display:none}}
+
+/* Promo */
+.promo{background:var(--brique);color:#fff;text-align:center;padding:9px 16px;font-weight:500}
+.promo b{font-weight:700}
+
+/* Héros */
+.heros{position:relative;display:grid;padding:0;overflow:hidden;background:var(--noir)}
+.heros>img{width:100%;height:34svh;object-fit:cover;object-position:50% 58%}
+.heros .conteneur{position:relative;z-index:2;width:100%;padding-top:26px;padding-bottom:40px}
+.heros h1{font-size:clamp(2.1rem,6vw,4.6rem)}
+.heros p.texte{max-width:33em;font-size:1.16rem;color:var(--os);margin:16px 0 26px}
+.heros .actions{display:flex;flex-wrap:wrap;gap:12px}
+@media (min-width:900px){
+  .heros{align-items:center;min-height:calc(100svh - 60px)}
+  .heros>img{position:absolute;top:0;bottom:0;right:0;left:44%;width:56%;height:100%;object-position:50% 50%}
+  .heros::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--noir) 44%,rgba(14,12,11,.55) 58%,transparent 76%)}
+  .heros .conteneur{padding-top:0;padding-bottom:0}
+  .heros .bloc{max-width:600px}
+}
+
+/* Points forts */
+.points{background:var(--anthracite);padding:0}
+.points ul{list-style:none;margin:0;padding:30px 0;display:grid;gap:22px 30px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.points li{border-left:2px dashed var(--rouge);padding-left:14px}
+.points b{display:block;color:var(--os);font-family:var(--titre);font-size:1.02rem;margin-bottom:2px}
+.points span{color:var(--doux);font-size:.97rem}
+
+/* Galerie */
+.galerie{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
+.piece{position:relative;padding:0;border:0;background:var(--cuir);color:inherit;font:inherit;text-align:left;cursor:zoom-in;border-radius:8px;overflow:hidden;display:block;width:100%}
+.piece img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .4s ease}
+.piece:hover img{transform:scale(1.04)}
+.piece.large,.piece.haute,.appel{grid-column:1/-1}
+.piece.haute img{aspect-ratio:4/5}
+.piece.large img{aspect-ratio:16/9}
+.legende{display:block;padding:12px 14px 15px}
+.legende strong{display:block;font-family:var(--titre);color:var(--os);font-size:1.03rem;line-height:1.25;margin-bottom:3px}
+.legende small{color:var(--doux);font-size:.9rem;line-height:1.4;display:block}
+.appel{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;background:var(--brique);color:#fff;border-radius:8px;padding:30px 28px;outline:1.5px dashed rgba(255,255,255,.5);outline-offset:-8px}
+.appel h3{color:#fff;font-size:clamp(1.3rem,3vw,1.8rem)}
+.appel p{margin:0}
+.appel .bouton{background:var(--noir)}
+.nb{position:absolute;top:10px;right:10px;z-index:1;background:rgba(14,12,11,.75);color:var(--os);font-size:.76rem;padding:2px 8px;border-radius:4px}
+@media (min-width:760px){
+  .galerie{grid-template-columns:repeat(12,1fr)}
+  .piece{grid-column:span 3}
+  .piece.haute{grid-column:span 6;grid-row:span 2}
+  .piece.haute img{aspect-ratio:auto;height:calc(100% - 92px);min-height:560px}
+  .piece.large,.appel{grid-column:span 6}
+  .piece.large img{aspect-ratio:3/2}
+}
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:92svh;overflow:visible}
+dialog::backdrop{background:rgba(5,4,3,.93)}
+.defile{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;max-height:82svh}
+.defile img{scroll-snap-align:center;max-height:82svh;max-width:90vw;width:auto;border-radius:6px;flex:none}
+dialog p{color:var(--os);text-align:center;margin:10px 0 0;font-weight:500}
+.fermer{position:fixed;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:1px solid var(--os);background:rgba(14,12,11,.8);color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* Avant / après */
+.avap{background:var(--anthracite)}
+.avap .duo{display:grid;gap:36px;align-items:center}
+@media (min-width:860px){.avap .duo{grid-template-columns:1fr 1fr}}
+.paire{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.paire figure{position:relative;margin:0}
+.paire img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px}
+.paire figcaption{position:absolute;bottom:10px;left:10px;background:rgba(14,12,11,.85);color:#fff;padding:2px 10px;border-radius:4px;font-size:.84rem;font-weight:700}
+
+/* Prestations */
+.presta{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.presta article{position:relative;background:var(--cuir);border-radius:8px;padding:26px 22px}
+.presta article::before{content:"";position:absolute;inset:7px;border:1.5px dashed rgba(184,154,94,.38);border-radius:5px;pointer-events:none}
+.presta h3{font-size:1.08rem;margin-bottom:8px}
+.presta p{margin:0;color:var(--doux)}
+
+/* Jeremy */
+.jeremy{display:grid;gap:30px;align-items:center}
+@media (min-width:760px){.jeremy{grid-template-columns:240px 1fr}}
+.jeremy img{width:150px;height:150px;border-radius:50%;margin:0 auto;box-shadow:0 0 0 6px var(--noir),0 0 0 8px var(--brique)}
+
+/* Contact */
+.contact{background:linear-gradient(180deg,var(--noir),#1d100d);text-align:center}
+.contact .surtitre{justify-content:center}
+.contact .chapo{margin-left:auto;margin-right:auto}
+.contact .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:34px}
+.infos{list-style:none;padding:0;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;color:var(--doux)}
+.infos b{color:var(--os)}
+footer{padding:26px 20px 34px;text-align:center;color:var(--doux);font-size:.9rem;border-top:2px dashed rgba(184,154,94,.28);background:#1d100d}
+footer p{margin:.2em 0}
+</style>
+</head>
+<body>
+
+<!-- Promo tirée du post Instagram de novembre ; disparaît seule après le 29/11/2026. -->
+<div class="promo" id="promo"><b>-10 %</b> sur toutes les prestations de sellerie moto, pour toute commande jusqu'au <b>29 novembre</b> inclus</div>
+
+<div class="barre">
+  <div class="conteneur">
+    <a class="marque" href="#haut"><img src="img/logo.jpg" alt="" width="40" height="40">Les Selles de Jerem</a>
+    <nav aria-label="Menu">
+      <a href="#realisations">Réalisations</a>
+      <a href="#avant-apres">Avant / après</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="heros" id="haut">
+  <img src="img/ktm-2.jpg" alt="Selle de KTM 1290 Superduke : bande blanche et surpiqûres en nid d'abeille">
+  <div class="conteneur"><div class="bloc">
+    <p class="surtitre">Sellerie moto · Montbellet (71)</p>
+    <h1>Une selle à ton image, faite pour ta moto</h1>
+    <p class="texte">Confort, design et broderie : chaque selle est pensée sur mesure. Envoi partout en France.</p>
+    <div class="actions">
+      <a class="bouton" href="#contact">J'ai un projet</a>
+      <a class="bouton clair" href="#realisations">Voir les réalisations</a>
+    </div>
+  </div></div>
+</header>
+
+<main>
+<section class="points" aria-label="Points forts">
+  <div class="conteneur"><ul>
+    <li><b>Confort</b><span>Mousse confort ou Bultex selon la selle</span></li>
+    <li><b>Matières moto</b><span>Jusqu'à 3 matières spéciales moto sur une selle</span></li>
+    <li><b>Broderie</b><span>Marque ou logo brodé, design sur mesure</span></li>
+    <li><b>Rabaissement</b><span>Rabaissement au maximum, même en moto-cross</span></li>
+  </ul></div>
+</section>
+
+<section id="realisations">
+  <div class="conteneur">
+    <p class="surtitre">Réalisations</p>
+    <h2>Sorties de l'atelier</h2>
+    <p class="chapo">Route, roadster, moto-cross ou scooter. Touche une photo pour l'agrandir.</p>
+    <div class="galerie">
+      <button class="piece haute" data-photos="img/ktm-1.jpg,img/ktm-2.jpg" aria-label="Agrandir : KTM 1290 Superduke">
+        <span class="nb">2 photos</span>
+        <img src="img/ktm-1.jpg" loading="lazy" alt="Selle de KTM 1290 Superduke, logo KTM brodé, bande blanche et ruche asymétrique">
+        <span class="legende"><strong>KTM 1290 Superduke</strong><small>Confort et design, broderie marque, ruche asymétrique, matière spéciale moto.</small></span>
+      </button>
+      <button class="piece" data-photos="img/tls-a-1.jpg,img/tls-a-2.jpg" aria-label="Agrandir : Suzuki TLS 1000">
+        <span class="nb">2 photos</span>
+        <img src="img/tls-a-1.jpg" loading="lazy" alt="Selle de Suzuki TLS 1000 avec logo Suzuki rouge brodé">
+        <span class="legende"><strong>Suzuki TLS 1000</strong><small>Mousse confort, 3 matières spéciales moto, broderie.</small></span>
+      </button>
+      <button class="piece" data-photos="img/husqvarna-1.jpg,img/husqvarna-2.jpg" aria-label="Agrandir : Husqvarna TE450">
+        <span class="nb">2 photos</span>
+        <img src="img/husqvarna-1.jpg" loading="lazy" alt="Selle de Husqvarna TE450 rouge et noire à nervures">
+        <span class="legende"><strong>Husqvarna TE450</strong><small>Rabaissement au maximum, matières spéciales moto-cross.</small></span>
+      </button>
+      <button class="piece large" data-photos="img/gsxf.jpg" aria-label="Agrandir : Suzuki GSXF">
+        <img src="img/gsxf.jpg" loading="lazy" alt="Selle de GSXF noire en nid d'abeille, logo GSXF brodé">
+        <span class="legende"><strong>GSXF</strong><small>Confort Bultex, broderie, design sur mesure, 3 matières spéciales moto.</small></span>
+      </button>
+      <button class="piece" data-photos="img/tls-b-1.jpg,img/tls-b-2.jpg" aria-label="Agrandir : Suzuki TLS 1000, deuxième selle">
+        <span class="nb">2 photos</span>
+        <img src="img/tls-b-1.jpg" loading="lazy" alt="Deuxième selle de Suzuki TLS 1000, logo rouge brodé et surpiqûres rouges">
+        <span class="legende"><strong>Suzuki 1000 TLS</strong><small>Confort et design avec broderie, 3 matières spéciales moto.</small></span>
+      </button>
+      <button class="piece" data-photos="img/zontes-1.jpg,img/zontes-2.jpg" aria-label="Agrandir : scooter Zontes 125">
+        <span class="nb">2 photos</span>
+        <img src="img/zontes-1.jpg" loading="lazy" alt="Selle de scooter Zontes 125, surpiqûres rouges en nid d'abeille">
+        <span class="legende"><strong>Zontes 125</strong><small>Selle de scooter, surpiqûres rouges en nid d'abeille.</small></span>
+      </button>
+      <button class="piece large" data-photos="img/mt07.jpg" aria-label="Agrandir : Yamaha MT07">
+        <img src="img/mt07.jpg" loading="lazy" alt="Selle de MT07 en deux parties, noire et rouge">
+        <span class="legende"><strong>MT07</strong><small>Mon design, réalisé chez mon ancien employeur.</small></span>
+      </button>
+      <button class="piece large" data-photos="img/cr125.jpg" aria-label="Agrandir : Honda CR 125">
+        <img src="img/cr125.jpg" loading="lazy" alt="Selle de Honda CR 125 noire, surpiqûres rouges en losanges">
+        <span class="legende"><strong>Honda CR 125</strong><small>Surpiqûres rouges en losanges.</small></span>
+      </button>
+      <div class="appel">
+        <h3>La prochaine, c'est la tienne ?</h3>
+        <p>Dis-moi quelle moto tu as et l'idée que tu as en tête.</p>
+        <a class="bouton" href="#contact">Parler de mon projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avap" id="avant-apres">
+  <div class="conteneur duo">
+    <div>
+      <p class="surtitre">Avant / après</p>
+      <h2>La 103 MPX d'un ami</h2>
+      <p class="chapo">Une vieille selle usée qui repart pour un tour.</p>
+    </div>
+    <div class="paire">
+      <figure><img src="img/mpx-avant.jpg" loading="lazy" alt="Avant : selle de 103 MPX usée et abîmée"><figcaption>Avant</figcaption></figure>
+      <figure><img src="img/mpx-apres.jpg" loading="lazy" alt="Après : la même selle refaite"><figcaption>Après</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="prestations">
+  <div class="conteneur">
+    <p class="surtitre">Prestations</p>
+    <h2>Ce que je fais</h2>
+    <p class="chapo">Uniquement sur rendez-vous.</p>
+    <div class="presta">
+      <article><h3>Selles moto sur mesure</h3><p>Garnissage, surpiqûres, couleurs et broderie au choix, pour ta machine.</p></article>
+      <article><h3>Réparation et rénovation</h3><p>Selle ou cuir usé, déchiré, fatigué : on reprend, on recoud, on redonne vie.</p></article>
+      <article><h3>Volants</h3><p>Gainage de volant, avec la couture qui te ressemble.</p></article>
+      <article><h3>Canapés et fauteuils</h3><p>Remise en état de tes assises en cuir à la maison.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="jeremy" style="padding-top:0">
+  <div class="conteneur jeremy">
+    <img src="img/logo.jpg" alt="Logo Les Selles de Jerem" width="150" height="150" loading="lazy">
+    <div>
+      <p class="surtitre">L'artisan</p>
+      <h2>Moi, c'est Jeremy</h2>
+      <!-- À COMPLÉTER par Jeremy si besoin : parcours, depuis quand, photo de lui ou de l'atelier. Aucun avis client affiché tant qu'il n'y en a pas de vrais. -->
+      <p class="chapo" style="margin-bottom:0">Je réalise tes selles à Montbellet, en Saône-et-Loire, et je les envoie partout en France. Tu as un projet moto ? Contacte-moi !</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="conteneur">
+    <p class="surtitre">Contact</p>
+    <h2>Tu as un projet ?</h2>
+    <p class="chapo">Écris-moi par mail ou en message privé, avec ta moto et ton idée.</p>
+    <div class="actions">
+      <a class="bouton" href="mailto:selledejerem@gmail.com?subject=Mon%20projet%20de%20selle">M'écrire un mail</a>
+      <a class="bouton clair" href="https://www.instagram.com/les_selles_de_jerem/" rel="noopener" target="_blank">Message sur Instagram</a>
+    </div>
+    <ul class="infos">
+      <li><b>Atelier :</b> Montbellet (71)</li>
+      <li><b>Envoi :</b> partout en France</li>
+      <li><b>Accueil :</b> uniquement sur rendez-vous</li>
+      <li><b>Mail :</b> <a href="mailto:selledejerem@gmail.com">selledejerem@gmail.com</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Les Selles de Jerem, sellerie moto à Montbellet (71)</p>
+  <!-- OBLIGATOIRE avant mise en ligne : mentions légales (nom/raison sociale, SIRET, adresse, hébergeur). -->
+</footer>
+
+<dialog id="zoom" aria-label="Photos en grand">
+  <form method="dialog"><button class="fermer" aria-label="Fermer">×</button></form>
+  <div class="defile" id="defile"></div>
+  <p id="zoom-titre"></p>
+</dialog>
+
+<script>
+if (new Date() >= new Date("2026-11-30")) document.getElementById("promo").remove();
+
+const zoom = document.getElementById("zoom");
+document.querySelectorAll(".piece").forEach(p => p.addEventListener("click", () => {
+  document.getElementById("defile").replaceChildren(...p.dataset.photos.split(",").map(s => {
+    const i = new Image(); i.src = s; i.alt = p.querySelector("img").alt; return i;
+  }));
+  document.getElementById("zoom-titre").textContent = p.querySelector("strong").textContent;
+  zoom.showModal();
+}));
+zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
+
+</script>
+</body>
+</html>
