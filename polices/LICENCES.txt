@@ -1,0 +1,4 @@
+Polices auto-hebergees (sous-ensemble latin, woff2, telechargees depuis Google Fonts le 19/11/2026) :
+- Cinzel (graisses 600, 700) : SIL Open Font License 1.1, "The Cinzel Project Authors"
+- Karla (graisses 400, 500, 700) : SIL Open Font License 1.1, "The Karla Project Authors"
+Texte de la licence : https://openfontlicense.org/ (OFL 1.1 : usage, copie et hebergement libres, y compris commercial).
