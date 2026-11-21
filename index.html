@@ -138,12 +138,79 @@ dialog p{color:var(--os);text-align:center;margin:10px 0 0;font-weight:500}
 .devis :focus{outline:2px solid var(--or);outline-offset:1px}
 .devis .bouton{border:0;cursor:pointer;width:100%;font:inherit;font-weight:700}
 #devis-suite{margin:0;color:var(--or)}
+.devis .aide{margin:0;color:var(--doux);font-size:.9em}
+.devis input[type=file]{padding:.6em;cursor:pointer}
+.apercus{display:flex;flex-wrap:wrap;gap:8px}
+.apercus img{width:76px;height:76px;object-fit:cover;border-radius:6px}
+.devis .piege{position:absolute;left:-9999px}
 footer{padding:26px 20px 34px;text-align:center;color:var(--doux);font-size:.9rem;border-top:2px dashed rgba(184,154,94,.28);background:#1d100d}
 footer p{margin:.2em 0}
+/* Devis en fenêtre (pop-up), étape par étape : mobile d'abord */
+#devis-ouvrir{font:inherit;font-weight:700;cursor:pointer}
+html:has(dialog[open]){overflow:hidden}
+#devis-modal{position:fixed;inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;background:var(--anthracite);color:var(--os);overflow:hidden}
+#devis-modal[open]{display:flex}
+#devis-modal form{display:flex;flex-direction:column;width:100%;height:100%;max-width:680px;margin:0 auto}
+@media (min-width:700px){#devis-modal{inset:4vh 0;height:92vh;margin:auto;max-width:680px;border-radius:10px;border:1px solid rgba(239,231,214,.25)}}
+.dm-tete{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 16px 10px}
+.dm-tete h2{margin:0;font-size:1.15rem;line-height:1.25}
+.dm-etape{margin:4px 0 0;color:var(--or);font-size:.95rem;text-align:left}
+.dm-fermer{flex:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--os);background:rgba(14,12,11,.8);color:#fff;font-size:1.5rem;cursor:pointer}
+.dm-barre{height:6px;margin:0 16px;border-radius:3px;background:rgba(239,231,214,.18);overflow:hidden}
+.dm-barre i{display:block;height:100%;width:0;background:var(--or);transition:width .25s}
+.dm-corps{flex:1;overflow-y:auto;padding:14px 16px 20px;overscroll-behavior:contain}
+.dm-intro,.dm-aide{margin:0 0 12px;color:var(--doux);font-size:.92rem;text-align:left}
+#devis-modal fieldset{border:0;margin:0;padding:0;display:grid;gap:14px;min-width:0}
+#devis-modal fieldset[hidden]{display:none}
+#devis-modal legend{font-family:var(--titre);font-size:1.1rem;color:var(--or);padding:0;margin-bottom:12px}
+#devis-modal legend:focus{outline:2px solid var(--or);outline-offset:3px}
+#devis-modal label{display:grid;gap:6px;color:var(--os);font-weight:700;text-align:left}
+#devis-modal small{color:var(--doux);font-weight:400}
+#devis-modal input:not([type=radio]):not([type=file]),#devis-modal textarea{width:100%;min-height:50px;padding:.7em .8em;border:1.5px solid rgba(239,231,214,.35);border-radius:6px;background:var(--noir);color:var(--os);font:inherit}
+#devis-modal input[type=file]{padding:.6em;cursor:pointer}
+#devis-modal textarea{resize:vertical}
+#devis-modal :focus-visible{outline:2px solid var(--or);outline-offset:2px}
+#devis-modal .invalide{border-color:#e0705f!important}
+.dm-groupe{display:grid;gap:8px}
+.dm-groupe>p{margin:0;font-weight:700;text-align:left}
+.dm-choix{display:flex!important;align-items:center;gap:10px;min-height:48px;padding:.5em .8em;border:1.5px solid rgba(239,231,214,.35);border-radius:6px;background:var(--noir);font-weight:400!important;cursor:pointer}
+.dm-choix input{width:22px;height:22px;flex:none;accent-color:var(--rouge)}
+.dm-choix:has(input:checked){border-color:var(--or);background:var(--cuir)}
+.dm-galerie{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:560px){.dm-galerie{grid-template-columns:repeat(3,1fr)}}
+.dm-design{position:relative;display:flex!important;flex-direction:column;gap:0;border:2px solid rgba(239,231,214,.35);border-radius:8px;background:var(--noir);overflow:hidden;cursor:pointer;font-weight:400!important}
+.dm-design:has(input:checked){border-color:var(--or);box-shadow:0 0 0 2px var(--or)}
+.dm-design input{position:absolute;opacity:0;pointer-events:none}
+.dm-design:has(input:focus-visible){outline:2px solid var(--or);outline-offset:2px}
+.dm-design img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--cuir)}
+.dm-design .sans-photo{width:100%;aspect-ratio:4/3;display:grid;place-items:center;background:var(--cuir);color:var(--doux);font-size:.9rem;padding:8px;text-align:center}
+.dm-design span.nom{padding:8px 10px;font-weight:700;font-size:.95rem;text-align:left}
+.dm-design:has(input:checked) span.nom::before{content:"✓ ";color:var(--or)}
+.dm-loupe{position:absolute;top:6px;right:6px;width:44px;height:44px;border-radius:50%;border:1px solid var(--os);background:rgba(14,12,11,.85);color:#fff;font-size:1.15rem;cursor:pointer}
+.dm-apercus{display:flex;flex-wrap:wrap;gap:8px}
+.dm-apercus img{width:72px;height:72px;object-fit:cover;border-radius:6px}
+.dm-recap{margin:0;display:grid;gap:6px;text-align:left}
+.dm-recap dt{color:var(--or);font-size:.85rem;margin-top:8px}
+.dm-recap dd{margin:0;color:var(--os);overflow-wrap:anywhere}
+.dm-pied{display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid rgba(239,231,214,.2);background:var(--anthracite)}
+.dm-pied .bouton{flex:1;border:0;cursor:pointer;font:inherit;font-weight:700}
+.dm-pied .bouton.clair{border:1.5px solid rgba(239,231,214,.55)}
+.dm-pied [hidden]{display:none}
+#devis-suite{margin:0;color:var(--or);text-align:left}
+#devis-modal .piege{position:absolute;left:-9999px}
+#zoom-design{position:fixed;inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;background:rgba(5,4,3,.97);display:none;flex-direction:column;align-items:center;padding:60px 8px 10px}
+#zoom-design[open]{display:flex}
+.zd-cadre{flex:1;min-height:0;width:100%;overflow:auto;touch-action:pan-x pan-y pinch-zoom;text-align:center}
+.zd-cadre img{max-width:100%;max-height:100%;cursor:zoom-in;transition:none}
+.zd-cadre.zoome img{max-width:none;max-height:none;width:220%;cursor:zoom-out}
+#zoom-design .dm-fermer{position:fixed;top:10px;right:10px}
+#zoom-design p{margin:6px 0 0}
+.zd-aide{color:var(--doux)!important;font-size:.85rem}
 </style>
 </head>
 <body>
 
+<!-- Promo tirée du post Instagram de novembre ; disparaît seule après le 29/11/2026. -->
 <div class="promo" id="promo"><b>-10 %</b> sur toutes les prestations de sellerie moto, pour toute commande jusqu'au <b>29 novembre</b> inclus</div>
 
 <div class="barre">
@@ -254,9 +321,6 @@ footer p{margin:.2em 0}
     <p class="chapo">Uniquement sur rendez-vous.</p>
     <div class="presta">
       <article><h3>Selles moto sur mesure</h3><p>Garnissage, surpiqûres, couleurs et broderie au choix, pour ta machine.</p></article>
-      <article><h3>Réparation et rénovation</h3><p>Selle ou cuir usé, déchiré, fatigué : on reprend, on recoud, on redonne vie.</p></article>
-      <article><h3>Volants</h3><p>Gainage de volant, avec la couture qui te ressemble.</p></article>
-      <article><h3>Canapés et fauteuils</h3><p>Remise en état de tes assises en cuir à la maison.</p></article>
     </div>
   </div>
 </section>
@@ -267,6 +331,7 @@ footer p{margin:.2em 0}
     <div>
       <p class="surtitre">L'artisan</p>
       <h2>Moi, c'est Jeremy</h2>
+      <!-- À COMPLÉTER par Jeremy si besoin : parcours, depuis quand, photo de lui ou de l'atelier. Aucun avis client affiché tant qu'il n'y en a pas de vrais. -->
       <p class="chapo" style="margin-bottom:0">Je réalise tes selles à Montbellet, en Saône-et-Loire, et je les envoie partout en France. Tu as un projet moto ? Contacte-moi !</p>
     </div>
   </div>
@@ -276,25 +341,10 @@ footer p{margin:.2em 0}
   <div class="conteneur">
     <p class="surtitre">Devis</p>
     <h2 id="devis">Demande ton devis</h2>
-    <p class="chapo">Remplis ces quelques lignes : ton mail s'ouvre avec ta demande déjà écrite, il ne reste qu'à ajouter tes photos et à l'envoyer.</p>
-    <form class="devis" id="form-devis">
-      <label>Ton prénom <input name="prenom" autocomplete="given-name" required></label>
-      <label>Téléphone <small>(facultatif)</small> <input name="tel" type="tel" autocomplete="tel"></label>
-      <label>Ton projet
-        <select name="projet" required>
-          <option value="">Choisis…</option>
-          <option>Selle moto sur mesure</option>
-          <option>Réparation ou rénovation</option>
-          <option>Volant</option>
-          <option>Canapé ou fauteuil</option>
-          <option>Autre</option>
-        </select>
-      </label>
-      <label>Ta machine <small>(marque, modèle, année)</small> <input name="machine"></label>
-      <label class="large">Ton idée <small>(couleurs, surpiqûres, broderie, état actuel…)</small> <textarea name="idee" required></textarea></label>
-      <div class="large"><button class="bouton" type="submit">Préparer ma demande de devis</button></div>
-      <p class="large" id="devis-suite" role="status" hidden>Ton mail doit s'ouvrir : ajoute tes photos, puis envoie. Rien ne s'ouvre ? Écris directement à selledejerem@gmail.com.</p>
-    </form>
+    <p class="chapo">Une demande de devis pour ta selle de moto : réponds à quelques questions, étape par étape, et ajoute tes photos.</p>
+    <div class="actions" style="margin-bottom:34px">
+      <button class="bouton" type="button" id="devis-ouvrir" aria-haspopup="dialog">Demander un devis</button>
+    </div>
     <p class="chapo">Tu préfères écrire directement ?</p>
     <div class="actions">
       <a class="bouton" href="mailto:selledejerem@gmail.com?subject=Mon%20projet%20de%20selle">M'écrire un mail</a>
@@ -312,13 +362,149 @@ footer p{margin:.2em 0}
 
 <footer>
   <p>Les Selles de Jerem, sellerie moto à Montbellet (71)</p>
-  <p><a href="mentions-legales/">Mentions légales</a></p>
+  <p><a href="mentions-legales.html">Mentions légales</a></p>
 </footer>
 
 <dialog id="zoom" aria-label="Photos en grand">
   <form method="dialog"><button class="fermer" aria-label="Fermer">×</button></form>
   <div class="defile" id="defile"></div>
   <p id="zoom-titre"></p>
+</dialog>
+
+<dialog id="devis-modal" aria-labelledby="dm-titre">
+  <form id="form-devis" novalidate>
+    <header class="dm-tete">
+      <div>
+        <h2 id="dm-titre">Demande de devis : selle de moto</h2>
+        <p class="dm-etape" id="dm-etape" aria-live="polite"></p>
+      </div>
+      <button class="dm-fermer" type="button" id="dm-fermer" aria-label="Fermer la demande de devis">×</button>
+    </header>
+    <div class="dm-barre" id="dm-barre" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Avancement de la demande"><i id="dm-barre-i"></i></div>
+
+    <div class="dm-corps">
+      <p class="dm-intro">Complète toutes les informations demandées (* = obligatoire). Jeremy te recontacte sous 72 h (jours ouvrés).</p>
+
+      <fieldset class="dm-etape-bloc" data-titre="Tes coordonnées">
+        <legend tabindex="-1">Tes coordonnées</legend>
+        <label>Nom et prénom *<input name="nom" autocomplete="name" required></label>
+        <label>Adresse e-mail *<input name="mail" type="email" autocomplete="email" required></label>
+        <label>Adresse postale *<textarea name="adresse" rows="3" autocomplete="street-address" required></textarea></label>
+        <label>Numéro de téléphone<input name="tel" type="tel" autocomplete="tel"></label>
+        <label>Si tu es un professionnel, SIRET<input name="siret" inputmode="numeric"></label>
+      </fieldset>
+
+      <fieldset class="dm-etape-bloc" data-titre="Ta moto" hidden>
+        <legend tabindex="-1">Ta moto</legend>
+        <label>Marque *<input name="marque" required></label>
+        <label>Modèle *<input name="modele" required></label>
+        <label>Année *<input name="annee" inputmode="numeric" required></label>
+      </fieldset>
+
+      <fieldset class="dm-etape-bloc" data-titre="Confort de selle : pilote" hidden>
+        <legend tabindex="-1">Confort de selle : pilote</legend>
+        <label>Taille et poids *<input name="pilote_taille_poids" placeholder="ex. 1,78 m, 75 kg" required></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-haut">
+          <p id="g-haut">Changement de hauteur ? *</p>
+          <label class="dm-choix"><input type="radio" name="pilote_hauteur" value="Oui, rehausser" required> Oui, rehausser</label>
+          <label class="dm-choix"><input type="radio" name="pilote_hauteur" value="Oui, rabaisser"> Oui, rabaisser</label>
+          <label class="dm-choix"><input type="radio" name="pilote_hauteur" value="Non"> Non</label>
+        </div>
+        <label>Si oui, combien de centimètres ?<input name="pilote_hauteur_cm" inputmode="numeric"></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-glisse">
+          <p id="g-glisse">Glisses-tu sur la selle ? *</p>
+          <label class="dm-choix"><input type="radio" name="pilote_glisse" value="Oui, en avant" required> Oui, en avant</label>
+          <label class="dm-choix"><input type="radio" name="pilote_glisse" value="Oui, en arrière"> Oui, en arrière</label>
+          <label class="dm-choix"><input type="radio" name="pilote_glisse" value="Non"> Non</label>
+        </div>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-chauf">
+          <p id="g-chauf">Selle chauffante ? *</p>
+          <label class="dm-choix"><input type="radio" name="chauffante" value="Oui" required> Oui</label>
+          <label class="dm-choix"><input type="radio" name="chauffante" value="Non"> Non</label>
+        </div>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-prem">
+          <p id="g-prem">Passage en confort PREMIUM ? *</p>
+          <p class="dm-aide">Valable pour la selle pilote + passager : la mousse confort HR est remplacée par de la mousse confort Bultex (+50 €).</p>
+          <label class="dm-choix"><input type="radio" name="premium" value="Oui" required> Oui</label>
+          <label class="dm-choix"><input type="radio" name="premium" value="Non"> Non</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="dm-etape-bloc" data-titre="Passager (facultatif)" hidden>
+        <legend tabindex="-1">Passager (facultatif)</legend>
+        <p class="dm-aide">Ne remplis rien ici si tu n'as pas besoin de confort passager : passe à l'étape suivante.</p>
+        <label>Taille et poids<input name="passager_taille_poids"></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-phaut">
+          <p id="g-phaut">Changement de hauteur ?</p>
+          <label class="dm-choix"><input type="radio" name="passager_hauteur" value="Oui, rehausser"> Oui, rehausser</label>
+          <label class="dm-choix"><input type="radio" name="passager_hauteur" value="Oui, rabaisser"> Oui, rabaisser</label>
+          <label class="dm-choix"><input type="radio" name="passager_hauteur" value="Non"> Non</label>
+        </div>
+        <label>Si oui, combien de centimètres ?<input name="passager_hauteur_cm" inputmode="numeric"></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-pglisse">
+          <p id="g-pglisse">Glisses-tu sur la selle ?</p>
+          <label class="dm-choix"><input type="radio" name="passager_glisse" value="Oui, en avant"> Oui, en avant</label>
+          <label class="dm-choix"><input type="radio" name="passager_glisse" value="Oui, en arrière"> Oui, en arrière</label>
+          <label class="dm-choix"><input type="radio" name="passager_glisse" value="Non"> Non</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="dm-etape-bloc" data-titre="Housse de selle" hidden>
+        <legend tabindex="-1">Housse de selle</legend>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-mat">
+          <p id="g-mat">Matière *</p>
+          <p class="dm-aide">Pas d'idée ? Choisis « Autre » : Jeremy te recontacte pour te conseiller.</p>
+          <label class="dm-choix"><input type="radio" name="matiere" value="Simili cuir uni antidérapant" required> Simili cuir uni antidérapant</label>
+          <label class="dm-choix"><input type="radio" name="matiere" value="Mix de simili cuir"> Mix de simili cuir</label>
+          <label class="dm-choix"><input type="radio" name="matiere" value="Cuir"> Cuir</label>
+          <label class="dm-choix"><input type="radio" name="matiere" value="Autre"> Autre</label>
+        </div>
+        <label>Couleur souhaitée, matière et fil *<textarea name="couleur" rows="3" required></textarea></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-surp">
+          <p id="g-surp">Design de surpiqûre *</p>
+          <p class="dm-aide">Touche une photo pour choisir ce design. Le bouton « Agrandir » (loupe) l'ouvre en grand. Selle unie : choisis « Aucune ».</p>
+          <div class="dm-galerie" id="galerie-surpiqure"></div>
+        </div>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-brod">
+          <p id="g-brod">Broderie ? *</p>
+          <label class="dm-choix"><input type="radio" name="broderie" value="Oui" required> Oui</label>
+          <label class="dm-choix"><input type="radio" name="broderie" value="Non"> Non</label>
+          <label class="dm-choix"><input type="radio" name="broderie" value="Autre"> Autre</label>
+        </div>
+        <label>Design de la broderie et couleur<textarea name="broderie_design" rows="2"></textarea></label>
+        <label>Toutes autres informations ou demandes spécifiques<textarea name="remarques" rows="3"></textarea></label>
+        <div class="dm-groupe" role="radiogroup" aria-labelledby="g-remise">
+          <p id="g-remise">Remise de la selle *</p>
+          <label class="dm-choix"><input type="radio" name="remise" value="Remise en main propre" required> Remise en main propre</label>
+          <label class="dm-choix"><input type="radio" name="remise" value="Livraison"> Livraison</label>
+        </div>
+        <label>Photos d'idée, ou de ta selle si elle est en mauvais état <small>(facultatif, 6 au maximum)</small><input id="devis-photos" type="file" accept="image/*" multiple></label>
+        <div class="dm-apercus" id="devis-apercus" hidden></div>
+        <label class="piege" aria-hidden="true">Ne pas remplir <input name="site" tabindex="-1" autocomplete="off"></label>
+      </fieldset>
+
+      <fieldset class="dm-etape-bloc" data-titre="Vérifie et envoie" hidden>
+        <legend tabindex="-1">Vérifie et envoie</legend>
+        <p class="dm-aide">Relis tes réponses. Pour corriger, reviens en arrière avec le bouton « Retour ».</p>
+        <dl class="dm-recap" id="dm-recap"></dl>
+        <p class="dm-aide">Ta demande s'ouvre dans ton application de mail : c'est toi qui l'envoies à Jeremy, uniquement pour préparer ton devis. Le site ne la garde pas. <a href="mentions-legales.html">Voir les mentions légales</a>.</p>
+        <p id="devis-suite" role="status" hidden></p>
+      </fieldset>
+    </div>
+
+    <footer class="dm-pied">
+      <button class="bouton clair" type="button" id="dm-retour">Retour</button>
+      <button class="bouton" type="button" id="dm-suivant">Suivant</button>
+      <button class="bouton" type="submit" id="devis-bouton" hidden>Envoyer ma demande de devis</button>
+    </footer>
+  </form>
+</dialog>
+
+<dialog id="zoom-design" aria-label="Design de surpiqûre en grand">
+  <button class="dm-fermer" type="button" id="zd-fermer" aria-label="Fermer la photo">×</button>
+  <div class="zd-cadre" id="zd-cadre"><img id="zd-img" alt=""></div>
+  <p id="zd-legende"></p>
+  <p class="zd-aide">Touche la photo pour zoomer, ou pince avec deux doigts.</p>
 </dialog>
 
 <script>
@@ -334,27 +520,228 @@ document.querySelectorAll(".piece").forEach(p => p.addEventListener("click", () 
 }));
 zoom.addEventListener("click", e => { if (e.target === zoom) zoom.close(); });
 
+// ---- Devis en fenêtre : étapes, validation, galerie de surpiqûres (designs dans surpiqures.json) ----
+const URL_DEVIS = "";   // Adresse du script Google de Jeremy (devis.gs). Vide = envoi par l'appli de mail (méthode d'origine, inchangée).
+const MAX_PHOTOS = 6;
+const modal = document.getElementById("devis-modal");
+const formDevis = document.getElementById("form-devis");
+const etapes = [...formDevis.querySelectorAll(".dm-etape-bloc")];
+const champPhotos = document.getElementById("devis-photos");
+const apercus = document.getElementById("devis-apercus");
+const suite = document.getElementById("devis-suite");
+const btnRetour = document.getElementById("dm-retour"), btnSuivant = document.getElementById("dm-suivant"), btnEnvoyer = document.getElementById("devis-bouton");
+let courante = 0;
+
+function dire(texte) { suite.textContent = texte; suite.hidden = !texte; }
+
+function afficherEtape(i, focus = true) {
+  courante = i;
+  etapes.forEach((e, k) => { e.hidden = k !== i; });
+  document.getElementById("dm-etape").textContent = `Étape ${i + 1} sur ${etapes.length} : ${etapes[i].dataset.titre}`;
+  const barre = document.getElementById("dm-barre");
+  barre.setAttribute("aria-valuenow", i + 1);
+  document.getElementById("dm-barre-i").style.width = ((i + 1) / etapes.length * 100) + "%";
+  btnRetour.textContent = i === 0 ? "Annuler" : "Retour";
+  btnSuivant.hidden = i === etapes.length - 1;
+  btnEnvoyer.hidden = i !== etapes.length - 1;
+  if (i === etapes.length - 1) recap();
+  dire("");
+  formDevis.querySelector(".dm-corps").scrollTop = 0;
+  if (focus) etapes[i].querySelector("legend").focus();
+}
+
+// Champs obligatoires de l'étape affichée : le premier qui manque reçoit le focus et un message.
+function etapeValide() {
+  const champs = [...etapes[courante].querySelectorAll("input,textarea")].filter(c => c.name !== "site");
+  formDevis.querySelectorAll(".invalide").forEach(c => c.classList.remove("invalide"));
+  for (const c of champs) {
+    if (!c.checkValidity()) {
+      (c.type === "radio" ? c.closest(".dm-groupe") : c).classList.add("invalide");
+      c.reportValidity();
+      return false;
+    }
+  }
+  return true;
+}
+
+function reponses() {
+  const d = Object.fromEntries(new FormData(formDevis));
+  delete d.site;
+  return d;
+}
+
+const LIBELLES = [
+  ["Nom et prénom", "nom"], ["E-mail", "mail"], ["Adresse postale", "adresse"], ["Téléphone", "tel"], ["SIRET", "siret"],
+  ["Marque", "marque"], ["Modèle", "modele"], ["Année", "annee"],
+  ["Pilote : taille et poids", "pilote_taille_poids"], ["Pilote : changement de hauteur", "pilote_hauteur"], ["Pilote : centimètres", "pilote_hauteur_cm"], ["Pilote : glisse", "pilote_glisse"],
+  ["Selle chauffante", "chauffante"], ["Confort premium", "premium"],
+  ["Passager : taille et poids", "passager_taille_poids"], ["Passager : changement de hauteur", "passager_hauteur"], ["Passager : centimètres", "passager_hauteur_cm"], ["Passager : glisse", "passager_glisse"],
+  ["Matière", "matiere"], ["Couleur, matière et fil", "couleur"], ["Design de surpiqûre", "surpiqure_nom"], ["Broderie", "broderie"], ["Design de la broderie", "broderie_design"], ["Autres demandes", "remarques"], ["Remise de la selle", "remise"]
+];
+
+function complet(d) {
+  const choix = designs.find(x => x.id === d.surpiqure);
+  return { ...d, surpiqure_nom: choix ? `${choix.nom} (${choix.id})` : d.surpiqure };
+}
+
+function recap() {
+  const d = complet(reponses()), dl = document.getElementById("dm-recap");
+  dl.replaceChildren(...LIBELLES.filter(([, k]) => (d[k] || "").trim()).flatMap(([l, k]) => {
+    const dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = l; dd.textContent = d[k];
+    return [dt, dd];
+  }));
+  const n = champPhotos.files.length;
+  if (n) { const dt = document.createElement("dt"), dd = document.createElement("dd"); dt.textContent = "Photos"; dd.textContent = `${n} photo(s) à joindre dans ton mail`; dl.append(dt, dd); }
+}
+
+// ---- Galerie de choix (surpiqûre) : un seul choix, photo zoomable, AUCUN prix affiché ----
+// Les designs sont dans surpiqures.json : {id, nom, photo, legende, a_venir}. Un design « a_venir » ou sans photo (hors « aucune » et « autre ») reste masqué.
+let designs = [];
+const DESIGNS_SECOURS = [
+  { id: "aucune", nom: "Aucune (selle unie)", legende: "Selle unie, sans surpiqûre." },
+  { id: "autre", nom: "Autre / à définir avec toi", legende: "Jeremy te recontacte pour définir le design." }
+];
+
+async function chargerDesigns() {
+  try {
+    const r = await fetch("surpiqures.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error("http " + r.status);
+    designs = (await r.json()).filter(x => x && x.id && x.nom && !x.a_venir && (x.photo || x.id === "aucune" || x.id === "autre"));
+  } catch (e) { designs = DESIGNS_SECOURS; }
+  if (!designs.length) designs = DESIGNS_SECOURS;
+  construireGalerie(document.getElementById("galerie-surpiqure"), "surpiqure", designs);
+}
+
+function construireGalerie(conteneur, nomChamp, liste) {
+  conteneur.replaceChildren(...liste.map((x, k) => {
+    const lab = document.createElement("label");
+    lab.className = "dm-design";
+    const radio = document.createElement("input");
+    radio.type = "radio"; radio.name = nomChamp; radio.value = x.id; radio.required = k === 0;
+    lab.append(radio);
+    if (x.photo) {
+      const img = new Image();
+      img.src = x.photo; img.alt = x.nom; img.loading = "lazy";
+      lab.append(img);
+    } else {
+      const sp = document.createElement("div");
+      sp.className = "sans-photo"; sp.textContent = x.legende || x.nom;
+      lab.append(sp);
+    }
+    const nom = document.createElement("span");
+    nom.className = "nom"; nom.textContent = x.nom;
+    lab.append(nom);
+    if (x.photo) {
+      const loupe = document.createElement("button");
+      loupe.type = "button"; loupe.className = "dm-loupe"; loupe.textContent = "🔍";
+      loupe.setAttribute("aria-label", "Agrandir : " + x.nom);
+      loupe.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); agrandir(x); });
+      lab.append(loupe);
+    }
+    return lab;
+  }));
+}
+
+const zoomDesign = document.getElementById("zoom-design"), zdCadre = document.getElementById("zd-cadre");
+function agrandir(x) {
+  const img = document.getElementById("zd-img");
+  img.src = x.photo; img.alt = x.nom;
+  zdCadre.classList.remove("zoome");
+  document.getElementById("zd-legende").textContent = x.nom + (x.legende ? " : " + x.legende : "");
+  zoomDesign.showModal();
+}
+document.getElementById("zd-img").addEventListener("click", () => zdCadre.classList.toggle("zoome"));
+document.getElementById("zd-fermer").addEventListener("click", () => zoomDesign.close());
+zoomDesign.addEventListener("click", e => { if (e.target === zoomDesign) zoomDesign.close(); });
+
+// ---- Ouverture, fermeture, navigation ----
+let declencheur = null;
+document.getElementById("devis-ouvrir").addEventListener("click", e => {
+  declencheur = e.currentTarget;
+  if (!designs.length) chargerDesigns();
+  afficherEtape(courante, false);
+  modal.showModal();
+  etapes[courante].querySelector("legend").focus();
+});
+function fermer() { modal.close(); }
+document.getElementById("dm-fermer").addEventListener("click", fermer);
+modal.addEventListener("close", () => { if (declencheur) declencheur.focus(); });   // Échap ferme aussi (natif) ; les réponses restent tant que la page n'est pas rechargée
+btnRetour.addEventListener("click", () => { if (courante === 0) fermer(); else afficherEtape(courante - 1); });
+btnSuivant.addEventListener("click", () => { if (etapeValide()) afficherEtape(courante + 1); });
+formDevis.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.tagName !== "TEXTAREA" && e.target.tagName !== "BUTTON") { e.preventDefault(); if (courante < etapes.length - 1) btnSuivant.click(); } });
+
+// ---- Photos jointes ----
+async function reduire(fichier) {
+  const image = await createImageBitmap(fichier);
+  const echelle = Math.min(1, 1600 / Math.max(image.width, image.height));
+  const toile = document.createElement("canvas");
+  toile.width = Math.round(image.width * echelle);
+  toile.height = Math.round(image.height * echelle);
+  toile.getContext("2d").drawImage(image, 0, 0, toile.width, toile.height);
+  image.close();
+  return toile.toDataURL("image/jpeg", 0.8).split(",")[1];
+}
+
+champPhotos.addEventListener("change", () => {
+  apercus.replaceChildren();
+  const fichiers = [...champPhotos.files];
+  if (fichiers.length > MAX_PHOTOS) {
+    champPhotos.value = "";
+    apercus.hidden = true;
+    return alert(`Choisis ${MAX_PHOTOS} photos au maximum.`);
+  }
+  apercus.hidden = !fichiers.length;
+  fichiers.forEach(f => {
+    const img = new Image();
+    img.alt = f.name;
+    img.src = URL.createObjectURL(f);
+    img.onload = () => URL.revokeObjectURL(img.src);
+    apercus.append(img);
+  });
+});
+
+// ---- Envoi : méthode d'origine (appli de mail, ou script Google si URL_DEVIS est remplie), seul le contenu s'élargit aux nouvelles questions ----
 function mailDevis(d) {
+  const lignes = LIBELLES.filter(([, k]) => (d[k] || "").trim()).map(([l, k]) => `${l} : ${d[k]}`);
   const corps = `Bonjour Jeremy,
 
-Je souhaite un devis.
+Je souhaite un devis pour une selle de moto.
 
-Prénom : ${d.prenom}
-Téléphone : ${d.tel || "non précisé"}
-Projet : ${d.projet}
-Machine : ${d.machine || "non précisée"}
+${lignes.join("\n")}
 
-Mon idée :
-${d.idee}
-
-(Pense à joindre des photos.)`;
-  return "mailto:selledejerem@gmail.com?subject=" + encodeURIComponent(`Demande de devis : ${d.projet}`) + "&body=" + encodeURIComponent(corps);
+(Je joins mes photos à ce mail.)`;
+  return "mailto:selledejerem@gmail.com?subject=" + encodeURIComponent(`Demande de devis : selle ${d.marque || ""} ${d.modele || ""}`.trim()) + "&body=" + encodeURIComponent(corps);
 }
-document.getElementById("form-devis").addEventListener("submit", e => {
+
+formDevis.addEventListener("submit", async e => {
   e.preventDefault();
-  document.getElementById("devis-suite").hidden = false;
-  location.href = mailDevis(Object.fromEntries(new FormData(e.target)));
+  if (!etapeValide()) return;
+  const d = complet(reponses());
+  if (!URL_DEVIS) {
+    dire("Ton mail doit s'ouvrir : ajoute tes photos, puis envoie. Rien ne s'ouvre ? Écris à selledejerem@gmail.com.");
+    location.href = mailDevis(d);
+    return;
+  }
+  btnEnvoyer.disabled = true;
+  dire("Envoi en cours…");
+  try {
+    d.photos = await Promise.all([...champPhotos.files].map(reduire));
+    const r = await fetch(URL_DEVIS, { method: "POST", body: JSON.stringify(d) });
+    const reponse = await r.json();
+    if (!reponse.ok) throw new Error(reponse.erreur);
+    formDevis.reset();
+    apercus.replaceChildren();
+    apercus.hidden = true;
+    dire("C'est envoyé, merci ! Jeremy te répondra dès que possible.");
+  } catch (err) {
+    console.error(err);
+    dire("L'envoi n'a pas marché. Réessaie, ou écris à selledejerem@gmail.com avec tes photos.");
+  } finally {
+    btnEnvoyer.disabled = false;
+  }
 });
+afficherEtape(0, false);
 
 </script>
 </body>
